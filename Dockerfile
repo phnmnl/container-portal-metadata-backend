@@ -14,6 +14,7 @@ RUN git clone https://github.com/phnmnl/portal-metadata-backend.git
 WORKDIR portal-metadata-backend
 RUN php composer.phar install
 RUN chmod a+x setup_connection.sh
+ENV PATH /var/www/html/portal-metadata-backend/vendor/propel/propel/bin:$PATH
 
 # php -S localhost:8080 -t public public/index.php
     
