@@ -2,8 +2,8 @@ FROM comicrelief/php7-slim:7.1
 
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
-LABEL software.version="1.0.0-alpha.0"
-LABEL version="0.2"
+LABEL software.version="1.0.0-rc.0"
+LABEL version="0.2.1"
 
 RUN apt-get update && apt-get install -y --no-install-recommends mysql-client
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
