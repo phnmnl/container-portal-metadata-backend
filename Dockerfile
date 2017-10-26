@@ -2,7 +2,7 @@ FROM comicrelief/php7-slim:7.1
 
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
-LABEL software.version="1.1.1"
+LABEL software.version="1.1.2"
 LABEL version="0.2.2"
 
 RUN apt-get update && apt-get install -y --no-install-recommends mysql-client
