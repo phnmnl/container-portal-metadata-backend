@@ -21,9 +21,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends mysql-client py
 RUN echo "Cloning branch '${git_branch}' of the Git repository '${git_repo}'" >&2 && \
     git clone --depth 1 --single-branch --branch ${git_branch} https://github.com/${git_repo}.git
 
+# Set working directory
 WORKDIR portal-metadata-backend
 
 # php -S localhost:8080 -t public public/index.php
 # Install backend dependencies
 RUN php composer.phar install && chmod a+x setup.sh
+
+# Set environment
+ENV MYSQL_HOST "localhost"
+ENV MYSQL_PORT 3306
+ENV SERVICE_PATH "/var/www/html/portal-metadata-backend"
+ENV PATH ${SERVICE_PATH}/vendor/propel/propel/bin:${PATH}
     
