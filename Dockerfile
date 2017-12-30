@@ -24,7 +24,6 @@ RUN echo "Cloning branch '${git_branch}' of the Git repository '${git_repo}'" >&
 # Set working directory
 WORKDIR portal-metadata-backend
 
-# php -S localhost:8080 -t public public/index.php
 # Install backend dependencies
 RUN php composer.phar install && chmod a+x setup.sh
 
@@ -37,4 +36,10 @@ ENV PATH ${SERVICE_PATH}/vendor/propel/propel/bin:${PATH}
 # Add utility to wait for MySQL service
 ADD wait-for-it.sh /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/wait-for-it
+
+# Add entrypoint script
+ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Default command
+CMD ["wait-for-it", "-t", "120", "${MYSQL_HOST}:${MYSQL_PORT}", "--", "entrypoint.sh"]
     
