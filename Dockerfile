@@ -33,4 +33,8 @@ ENV MYSQL_HOST "localhost"
 ENV MYSQL_PORT 3306
 ENV SERVICE_PATH "/var/www/html/portal-metadata-backend"
 ENV PATH ${SERVICE_PATH}/vendor/propel/propel/bin:${PATH}
+
+# Add utility to wait for MySQL service
+ADD wait-for-it.sh /usr/local/bin/wait-for-it
+RUN chmod +x /usr/local/bin/wait-for-it
     
