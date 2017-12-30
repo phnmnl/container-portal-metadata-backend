@@ -1,4 +1,4 @@
-FROM comicrelief/php7-slim:7.1
+FROM crs4/php7-base:7.1
 
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
