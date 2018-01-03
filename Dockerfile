@@ -42,4 +42,7 @@ ADD entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Default command
 CMD ["wait-for-it", "-t", "120", "${MYSQL_HOST}:${MYSQL_PORT}", "--", "entrypoint.sh"]
+
+# Container ports
+EXPOSE 8888
     
