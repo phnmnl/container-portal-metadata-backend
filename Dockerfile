@@ -7,7 +7,7 @@ MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
 LABEL software.version="1.1.2"
-LABEL version="0.2.2"
+LABEL version="1.0.0"
 
 # Optional arguments to choose the Git repo & branch to use at build time
 ARG git_repo=phnmnl/portal-metadata-backend
