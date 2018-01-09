@@ -3,6 +3,7 @@ FROM crs4/php7-base:7.1
 # File Author / Maintainer
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
+# Image Metadata
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
 LABEL software="PhenoMeNal Portal"
 LABEL software.version="1.1.2"
@@ -10,7 +11,7 @@ LABEL version="0.2.2"
 
 # Optional arguments to choose the Git repo & branch to use at build time
 ARG git_repo=phnmnl/portal-metadata-backend
-ARG git_branch=master
+ARG git_branch=develop
 
 # Install required packages
 RUN apt-get update && apt-get install -y --no-install-recommends mysql-client python2.7 python-pip && \
