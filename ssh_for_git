@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Wrap ssh so what we can pass it arguments when it's called by git
+# Use the GIT_SSH environment variable to tell git to call this script
+# instead of the git executable.  This wrapper will take care of injecting
+# the ssh arguments we need to make the thing work.
+
+CMD=(/usr/bin/ssh -o StrictHostKeyChecking=no)
+if [[ -n "${PROVIDERS_REPO_KEY:-}" ]]; then
+  CMD+=(-i "${PROVIDERS_REPO_KEY}")
+fi
+
+CMD+=("${@}")
+
+exec "${CMD[@]}"
