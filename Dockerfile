@@ -4,10 +4,10 @@ FROM crs4/php7-base:7.1
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
 # container version
-ENV version="1.1"
+ENV version="1.2"
 
 # software version
-ENV software_version="1.2.1"
+ENV software_version="2.1"
 
 # Image Metadata
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
@@ -43,12 +43,10 @@ ENV MYSQL_PORT 3306
 ENV SERVICE_PATH "/var/www/html/portal-metadata-backend"
 ENV PATH ${SERVICE_PATH}/vendor/propel/propel/bin:${PATH}
 
-# Add utility to wait for MySQL service
+# wait-for-it is a utility to wait for MySQL service
 ADD wait-for-it.sh /usr/local/bin/wait-for-it
-RUN chmod +x /usr/local/bin/wait-for-it
-
-# Add entrypoint script
-ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD entrypoint.sh ssh_for_git /usr/local/bin/
+RUN chmod +rx /usr/local/bin/*
 
 # Default command
 CMD ["wait-for-it", "-t", "120", "${MYSQL_HOST}:${MYSQL_PORT}", "--", "entrypoint.sh"]
