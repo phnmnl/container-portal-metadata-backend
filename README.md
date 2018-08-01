@@ -2,7 +2,7 @@
 ![Logo](portal-logo.png)
 
 # PhenoMeNal Metadata Backend
-Version: 1.1
+Version: 1.2
 
 ## Description
 
