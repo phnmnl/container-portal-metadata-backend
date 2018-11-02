@@ -8,6 +8,8 @@ export PROVIDERS_REPO_KEY="${PROVIDERS_REPO_KEY:-/portal-metadata-backend/keys/p
 export PROVIDERS_DIR="${PROVIDERS_DIR:-/portal-metadata-backend/providers}"
 
 ## Clone provider repository
+echo "Removing ${PROVIDERS_DIR} if it exists" >&2
+rm -rf "${PROVIDERS_DIR}"
 echo "Cloning providers repository ${PROVIDERS_REPO}" >&2
 GIT_SSH=/usr/local/bin/ssh_for_git git clone --depth 1 --single-branch --branch master "${PROVIDERS_REPO}" "${PROVIDERS_DIR}"
 if [[ $? != 0 ]]; then
