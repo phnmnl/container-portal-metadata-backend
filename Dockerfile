@@ -7,7 +7,7 @@ MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 ENV version="1.2"
 
 # software version
-ENV software_version="2.1"
+ENV software_version="2.2"
 
 # Image Metadata
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
