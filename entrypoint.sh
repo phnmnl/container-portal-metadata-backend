@@ -3,8 +3,6 @@
 # set web server port
 web_server_port=${1:-8080}
 
-export PROVIDERS_REPO="${PROVIDERS_REPO:-git@bitbucket.org:crs4/partner-providers.git}"
-export PROVIDERS_REPO_KEY="${PROVIDERS_REPO_KEY:-/portal-metadata-backend/keys/provider_repo_key}"
 export PROVIDERS_DIR="${PROVIDERS_DIR:-/portal-metadata-backend/providers}"
 
 ## Set version of provider repository
