@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-# set web server port
+# Set web server port
 web_server_port=${1:-8080}
 
+# Set providers directory
 export PROVIDERS_DIR="${PROVIDERS_DIR:-/portal-metadata-backend/providers}"
 
-## Set version of provider repository
-if [[ -n "${PROVIDERS_VERSION}" ]]; then
-    PROVIDERS_VERSION="master"
-fi
+# Set version of provider repository
+PROVIDERS_REPO_VERSION="${PROVIDERS_REPO_VERSION:-master}"
 
 # Remove existing provider repository
 echo "Removing ${PROVIDERS_DIR} if it exists" >&2
@@ -29,8 +28,8 @@ if [[ -n "${PROVIDERS_REPO}" ]]; then
     fi
 fi
 
-# update configuration files and initialise DB
+# Update configuration files and initialise DB
 "${SERVICE_PATH}/setup.sh"
 
-# start the web server
+# Start the web server
 "${SERVICE_PATH}/start.sh" ${web_server_port}
