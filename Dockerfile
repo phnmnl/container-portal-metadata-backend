@@ -4,10 +4,10 @@ FROM crs4/php7-base:7.1
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
 # container version
-ENV version="1.2"
+ENV version="1.3"
 
 # software version
-ENV software_version="2.2"
+ENV software_version="2.3"
 
 # Image Metadata
 LABEL Description="Metadata backend for the PhenoMeNal Portal"
