@@ -10,15 +10,23 @@ if [[ -n "${PROVIDERS_VERSION}" ]]; then
     PROVIDERS_VERSION="master"
 fi
 
-## Clone provider repository
+# Remove existing provider repository
 echo "Removing ${PROVIDERS_DIR} if it exists" >&2
 rm -rf "${PROVIDERS_DIR}"
-echo "Cloning providers repository ${PROVIDERS_REPO} (version: '${PROVIDERS_VERSION}'" >&2
-GIT_SSH=/usr/local/bin/ssh_for_git git clone --depth 1 --single-branch --branch ${PROVIDERS_VERSION} "${PROVIDERS_REPO}" "${PROVIDERS_DIR}"
-if [[ $? != 0 ]]; then
-  echo "Failed to clone providers repository.  Check the previous log entries for clues." >&2
-  echo "Starting container without partner providers" >&2
-  PROVIDERS_DIR=""
+
+# Clone provider repository
+if [[ -n "${PROVIDERS_REPO}" ]]; then
+    echo "Cloning providers repository ${PROVIDERS_REPO} (version: '${PROVIDERS_REPO_VERSION}')" >&2
+    GIT_SSH=/usr/local/bin/ssh_for_git git clone --depth 1 --single-branch --branch ${PROVIDERS_REPO_VERSION} "${PROVIDERS_REPO}" "${PROVIDERS_DIR}"
+    if [[ $? != 0 ]]; then
+        echo "Providers Repository: ${PROVIDERS_REPO}" >&2
+        echo "Providers Repository Key: ${PROVIDERS_REPO_KEY}" >&2
+        echo "Providers Repository Version: ${PROVIDERS_REPO_VERSION}" >&2
+        echo "Failed to clone providers repository.  Check the previous log entries for clues." >&2
+        # Unset Providers Directory to start the container without partners
+        echo -e "\nStarting container without partner providers" >&2
+        PROVIDERS_DIR=""
+    fi
 fi
 
 # update configuration files and initialise DB
